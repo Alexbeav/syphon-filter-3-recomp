@@ -1,0 +1,56 @@
+# Autofilled by tools/new_project_layout/probe_disc.py from your legal dump.
+# Review before shipping. Runtime quirks / overlay seeds still need hand work.
+
+[game]
+name = "Syphon Filter 3"
+id = "SCUS-94640"
+players = 2
+exe = "disc/SCUS_946.40"
+disc = "disc/Syphon Filter 3 (USA).cue"
+load_address = "0x80010000"
+entry_pc = "0x800FB368"
+text_size = "0x001CC000"
+stack_base = "0x801FFFF0"
+
+# Digests are for data Track 01 (first BINARY FILE / TRACK 01).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "Syphon Filter 3 (USA).bin"
+cue_name = "Syphon Filter 3 (USA).cue"
+boot_exe = "SCUS_946.40"
+known_sizes = [691530336]
+known_md5 = [
+  "48624685dc393716302f2477a0b18c4f",
+]
+known_sha1 = [
+  "4abe30077c2b449ea68239083df7932d47ae0b69",
+]
+known_crc32 = [
+  "3656471f",
+]
+
+[recompiler]
+seeds = "seeds/ghidra_funcs.txt"
+out_dir = "generated"
+bios_config = "psxrecomp/bios/SCPH1001.toml"
+strict = true
+
+[runtime]
+window_title = "Syphon Filter 3 Recompiled"
+memcard_dir = "saves"
+bios_hle = false
+openbios = false
+
+[video]
+renderer = "opengl"
+aspect_ratio = "4:3"
+
+[controller]
+default_mode = "digital"
+
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+require_cue = true
+required_tracks = 1
+required_disc_fp = "d1f6f599489032f4ce1a0566312a7dd798ce95da159cd532a740cc31ed4788de"
